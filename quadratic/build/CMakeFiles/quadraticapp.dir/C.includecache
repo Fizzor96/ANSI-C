@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dominik/prog/ANSI-C/quadratic/main.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+quadratic.h
+/home/dominik/prog/ANSI-C/quadratic/quadratic.h
+
+/home/dominik/prog/ANSI-C/quadratic/quadratic.h
+

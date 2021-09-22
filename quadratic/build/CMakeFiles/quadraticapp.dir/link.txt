@@ -1,0 +1,1 @@
+/usr/bin/x86_64-linux-gnu-gcc-10 -g CMakeFiles/quadraticapp.dir/main.c.o CMakeFiles/quadraticapp.dir/quadratic.c.o -o quadraticapp  -lm 
