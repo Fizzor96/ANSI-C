@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+// #include <alloca.h>
 #include "quadratic.h"
 
 void Prnt(const char *str);
@@ -17,6 +18,8 @@ int main(int argc, char **argv)
     int *myNum3 = (int *)malloc(sizeof(int));
     *myNum3 = 5;
     free(myNum3);
+
+    Prnt("---------ARRAYS---------------");
 
     int myNums1[] = {1, 2, 3};
     int *myNums2 = (int *)malloc(sizeof(int) * 3);
