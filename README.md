@@ -1,2 +1,2 @@
 # ANSI-C
- Multiparadigmas programozasi nyelvek
+https://tinyurl.com/ansirepo
