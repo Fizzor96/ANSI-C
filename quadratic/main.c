@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     double x1, x2;
     int resp = solve(1, 4, 4, &x1, &x2);
 
-    char textBuffer[255];
+    char textBuffer[1];
 
     strcat(textBuffer, "Response: ");
     char respTxt[4];
