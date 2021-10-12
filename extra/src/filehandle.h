@@ -60,12 +60,21 @@ unsigned int GetCharNumOfLongestLineFromFile(const char *path);
 *   Look up definition for more info!
  */
 void PrintFileData(const char *path, unsigned int wantCreate);
+
 /* 
 * Load the whole file into memory (byte by byte).
 */
 char *LoadFromFile(const char *path);
 
-// TODO: impl
-void WriteToFile(const char *path, const char *data, unsigned int mode);
+/* 
+* Write data into file (path) with the given mode.
+* Suggestion (to avoid complications): use CREATEWRITETRUNC or CREATEAPPEND macro.
+*/
+void WriteToFile(const char *path, const char *data, char *mode);
+
+/* 
+* Load all lines from existing file into an array.
+*/
+char **GetLines(const char *path);
 
 #endif //PROCEDURAL_FILEHANDLE_H

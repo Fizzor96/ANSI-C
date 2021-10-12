@@ -89,6 +89,7 @@ void PrintFileData(const char *path, unsigned int wantCreate)
     {
         FILE *fp = fopen(path, READ);
         char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
+        // stl fgets() eq. getline() gnu gcc (linux specific)
         while (fgets(str, GetNumberOfCharsFromFile(path), fp))
         {
             // printf("%s\n", str);
@@ -146,10 +147,31 @@ char *LoadFromFile(const char *path)
     return NULL;
 }
 
-void WriteToFile(const char *path, const char *data, unsigned int mode)
+void WriteToFile(const char *path, const char *data, char *mode)
+{
+    if (mode != READ)
+    {
+        FILE *fp = fopen(path, mode);
+        fputs(data, fp);
+        fclose(fp);
+    }
+}
+
+char **GetLines(const char *path)
 {
     if (IsFileExist(path))
     {
-        /* code */
+        FILE *fp = fopen(path, READ);
+        char **arr = malloc(sizeof(char) * GetNumberOfLinesFromFile(path));
+        char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
+        unsigned int index = 0;
+        while (fgets(str, GetNumberOfCharsFromFile(path), fp))
+        {
+            arr[index] = str;
+        }
+        free(str);
+        fclose(fp);
+        return arr;
     }
+    return NULL;
 }
