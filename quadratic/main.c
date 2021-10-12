@@ -94,6 +94,7 @@ int main(int argc, char **argv)
 
     // Creating a QuadraticSolution pointer (solve_struct return value is a " QuadraticSolution* " !!!)
     struct QuadraticSolution *solution = solve_struct(1, 4, 4);
+    (*solution).x1;
 
     printf("Response: %d, (%lf,%lf)\n", solution->status, solution->x1, solution->x2);
 

@@ -1,0 +1,3 @@
+/home/dominik/Prog/AnsiC/ANSI-C/quadratic/build/CMakeFiles/rebuild_cache.dir
+/home/dominik/Prog/AnsiC/ANSI-C/quadratic/build/CMakeFiles/edit_cache.dir
+/home/dominik/Prog/AnsiC/ANSI-C/quadratic/build/CMakeFiles/quadraticapp.dir

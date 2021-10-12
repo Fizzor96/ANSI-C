@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/dominik/Prog/AnsiC/ANSI-C/quadratic/build",
+  "command": "/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0    -g -Wall -g -std=gnu99 -o CMakeFiles/quadraticapp.dir/main.c.o -c /home/dominik/Prog/AnsiC/ANSI-C/quadratic/main.c",
+  "file": "/home/dominik/Prog/AnsiC/ANSI-C/quadratic/main.c"
+},
+{
+  "directory": "/home/dominik/Prog/AnsiC/ANSI-C/quadratic/build",
+  "command": "/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0    -g -Wall -g -std=gnu99 -o CMakeFiles/quadraticapp.dir/quadratic.c.o -c /home/dominik/Prog/AnsiC/ANSI-C/quadratic/quadratic.c",
+  "file": "/home/dominik/Prog/AnsiC/ANSI-C/quadratic/quadratic.c"
+}
+]

@@ -7,12 +7,12 @@
 
 int solve(double a, double b, double c, double *x1, double *x2);
 
+#define NO_SOLUTION 0
+#define SINGLE_SOLUTION 1
+#define TWO_REAL_SOLUTIONS 2
 
-#define NO_SOLUTION  0
-#define SINGLE_SOLUTION  1
-#define TWO_REAL_SOLUTIONS  2
-
-struct QuadraticSolution{
+struct QuadraticSolution
+{
     int status;
     double x1;
     double x2;
@@ -27,6 +27,6 @@ struct QuadraticSolution{
  * @param c
  * @return
  */
-struct QuadraticSolution* solve_struct(double a, double b, double c);
+struct QuadraticSolution *solve_struct(double a, double b, double c);
 
 #endif //PROCEDURAL_PROGRAMMING_QUADRATIC_H
