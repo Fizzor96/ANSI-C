@@ -1,49 +1,116 @@
 #include "filehandle.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 
-#pragma GCC diagnostic ignored "-Wformat-zero-length"
-void PrintFileData(const char *path, unsigned int wantCreate)
+unsigned int IsFileExist(const char *path)
 {
-    // Check if the file is exist
+    // Macros for access() param declared in unistd.h eg. F_OK = 0
     if (access(path, F_OK) == 0)
     {
-        printf("File exist!\n");
-        FILE *fp = fopen(path, READ);
+        // File exist
+        return 1;
+    }
+    // File does not exist
+    return 0;
+}
 
-        unsigned int numOfCharsInFile = 0;
+unsigned int BonyiMatek(const char *path)
+{
+    if (IsFileExist(path))
+    {
+        unsigned int sum = 0;
+        sum = GetNumberOfCharsFromFile(path);
+        // IMPORTANT: 2 * GetNumberOfLinesFromFile(path)
+        // Reason: nulltermination char or newline char!!!
+        sum = sum + 2 * GetNumberOfLinesFromFile(path);
+        return sum;
+    }
+    return 0;
+}
+
+unsigned int GetNumberOfCharsFromFile(const char *path)
+{
+    if (IsFileExist(path))
+    {
+        FILE *fp = fopen(path, READ);
+        unsigned int count = 0;
         for (char c = getc(fp); c != EOF; c = getc(fp))
         {
-            numOfCharsInFile = numOfCharsInFile + 1;
+            count = count + 1;
         }
-        printf("%i\n", numOfCharsInFile);
-        // printf("%s\n", buffer);
+        fclose(fp);
+        return count;
+    }
+    return 0;
+}
 
-        char *line;
-        ssize_t read;
-        size_t len = 0;
-        char *buffer = (char *)malloc(sizeof(char) * numOfCharsInFile);
-        while ((read = getline(&line, &len, fp)) != -1)
+unsigned int GetNumberOfLinesFromFile(const char *path)
+{
+    if (IsFileExist(path))
+    {
+        FILE *fp = fopen(path, READ);
+        unsigned int count = 0;
+        for (char c = getc(fp); c != EOF; c = getc(fp))
         {
-            printf("Retrieved line of length %zu:\n", read);
-            printf("%s", line);
+            if (c == '\n')
+            {
+                count = count + 1;
+            }
         }
-        free(buffer);
+        fclose(fp);
+        return count + 1;
+    }
+    return 0;
+}
+
+unsigned int GetCharNumOfLongestLineFromFile(const char *path)
+{
+    if (IsFileExist(path))
+    {
+        FILE *fp = fopen(path, READ);
+        unsigned int count = 0;
+        char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
+        while (fgets(str, GetNumberOfCharsFromFile(path), fp))
+        {
+            if ((unsigned int)strlen(str) > count)
+            {
+                count = strlen(str);
+            }
+        }
+        free(str);
+        fclose(fp);
+        return count;
+    }
+    return 0;
+}
+
+void PrintFileData(const char *path, unsigned int wantCreate)
+{
+    // Check if the file exist
+    if (IsFileExist(path))
+    {
+        FILE *fp = fopen(path, READ);
+        char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
+        while (fgets(str, GetNumberOfCharsFromFile(path), fp))
+        {
+            // printf("%s\n", str);
+            printf("%s", str);
+        }
+        free(str);
         fclose(fp);
     }
     else
     {
-        printf("File is NOT exist!\n");
         if (wantCreate == CREATE)
         {
             FILE *fp = fopen(path, CREATEWRITE);
             fclose(fp);
-            printf("File have been created!\n");
             fp = fopen(path, READ);
-            // Impl
+            char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
+            while (fgets(str, GetNumberOfCharsFromFile(path), fp))
+            {
+                // printf("%s\n", str);
+                printf("%s", str);
+            }
+            free(str);
             fclose(fp);
         }
         else
@@ -51,15 +118,38 @@ void PrintFileData(const char *path, unsigned int wantCreate)
             printf("No actions have been commited!\n");
         }
     }
-
-    // FILE *fp;
-    // fp = fopen(path, CREATEWRITE);
-    // fprintf(fp, "This is testing...\n");
-    // char buffer[255];
-    // fscanf(fp, "%s", buffer);
-    // fgets(buffer, 255, fp);
-    // printf("Read Buffer: %s\n", buffer);
-    // fclose(fp);
-    // free(buffer);
 }
-#pragma GCC diagnostic warning "-Wformat-zero-length"
+
+char *LoadFromFile(const char *path)
+{
+    if (IsFileExist(path))
+    {
+        FILE *fp = fopen(path, READ);
+        char *storage = (char *)malloc(sizeof(char) * BonyiMatek(path));
+        int c;
+        for (unsigned int i = 0; i < GetNumberOfCharsFromFile(path); ++i)
+        {
+            c = getc(fp);
+
+            // If 'c' is End of File => break!
+            if (c == EOF)
+            {
+                storage[i] = 0x00;
+                break;
+            }
+
+            storage[i] = c;
+        }
+
+        return storage;
+    }
+    return NULL;
+}
+
+void WriteToFile(const char *path, const char *data, unsigned int mode)
+{
+    if (IsFileExist(path))
+    {
+        /* code */
+    }
+}
