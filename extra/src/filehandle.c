@@ -175,24 +175,62 @@ void WriteToFile(const char *path, const char *data, char *mode)
     }
 }
 
-char **GetLines(const char *path)
+void GetLines(const char *path, char **arr)
+{
+    for (size_t i = 0; i < GetNumberOfLinesFromFile(path); i++)
+    {
+        arr[i] = GetNthLine(path, (unsigned int)i);
+    }
+}
+
+char *GetNthLine(const char *path, unsigned int n)
 {
     if (IsFileExist(path))
     {
         FILE *fp = fopen(path, READ);
-        char **arr = (char **)malloc(sizeof(char) * GetNumberOfLinesFromFile(path));
-        printf("USABLE SIZE = %i\n", (int)malloc_usable_size(arr));
-        char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
-        unsigned int index = 0;
-        while (fgets(str, GetNumberOfCharsFromFile(path), fp))
+        char *line = (char *)malloc(sizeof(char) * GetCharNumOfLongestLineFromFile(path));
+        int c;
+        unsigned int counter = 0;
+        unsigned int j = 0;
+        for (unsigned int i = 0; i < GetNumberOfCharsFromFile(path); i++)
         {
-            arr[index] = str;
-            // printf("%s", arr[index]);
-            index = index + 1;
+            c = getc(fp);
+
+            if (c == EOF)
+            {
+                line[j] = 0x00;
+                break;
+            }
+
+            if (counter == n)
+            {
+                line[j] = c;
+                j = j + 1;
+                // 0x0a == \n
+                if (c == 0x0a)
+                {
+                    counter = counter + 1;
+                    line[j] = 0x00;
+                    j = 0;
+                }
+            }
+            else if (counter > n)
+            {
+                break;
+            }
+            else
+            {
+                // 0x0a == \n
+                if (c == 0x0a)
+                {
+                    counter = counter + 1;
+                    // line[j] = 0x0a;
+                    j = 0;
+                }
+            }
         }
-        // free(str);
-        fclose(fp);
-        return arr;
+
+        return line;
     }
     return NULL;
 }

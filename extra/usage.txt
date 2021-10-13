@@ -1,0 +1,10 @@
+NAME
+    extra, ApplicationExtra, tutorial, ansi-c
+SYNOPSIS
+        ./${EXECUTABLENAME} [OPTION]... {ARGS}
+DESCRIPTION
+    Ansi-C file handling example for multipara lesson
+    -h, -H
+        Output a usage message and exit.
+    -r, -R
+        Run the code.
