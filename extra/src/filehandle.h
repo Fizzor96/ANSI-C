@@ -1,11 +1,18 @@
 #ifndef PROCEDURAL_FILEHANDLE_H
 #define PROCEDURAL_FILEHANDLE_H
 
+/*  
+*   Simple function decls for handling files.
+*   There is no const buffers or fixed size stack allocated buffers,
+*   everything is dynamically allocated to avoid segmentation faults and any other problems.
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <malloc.h>
 
 #define CREATE 1
 #define NOCREATE 0
@@ -54,10 +61,14 @@ unsigned int GetNumberOfLinesFromFile(const char *path);
 */
 unsigned int GetCharNumOfLongestLineFromFile(const char *path);
 
-/*  path = filename, wantCreate = CREATE / NOCREATE.
+/*  
+*   Reading or Creating a file.
+*   path = filename, wantCreate = CREATE / NOCREATE.
 *   CREATE, NOCREATE are defined macro directives!
-*   If file does not exist and the use of NOCREATE macro basically does nothing...
-*   Look up definition for more info!
+*   If file does not exist: 
+*   - READ read data from the file (IF IT EXIST!!!) and print to standard output otherwise do nothing
+*   - CREATE create a new file
+*   For more info: look up the definition!
  */
 void PrintFileData(const char *path, unsigned int wantCreate);
 

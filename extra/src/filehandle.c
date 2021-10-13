@@ -84,28 +84,16 @@ unsigned int GetCharNumOfLongestLineFromFile(const char *path)
 
 void PrintFileData(const char *path, unsigned int wantCreate)
 {
-    // Check if the file exist
-    if (IsFileExist(path))
+    if (wantCreate == (unsigned int)0)
+        wantCreate = NOCREATE;
+
+    if (wantCreate == NOCREATE)
     {
-        FILE *fp = fopen(path, READ);
-        char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
-        // stl fgets() eq. getline() gnu gcc (linux specific)
-        while (fgets(str, GetNumberOfCharsFromFile(path), fp))
+        if (IsFileExist(path))
         {
-            // printf("%s\n", str);
-            printf("%s", str);
-        }
-        free(str);
-        fclose(fp);
-    }
-    else
-    {
-        if (wantCreate == CREATE)
-        {
-            FILE *fp = fopen(path, CREATEWRITE);
-            fclose(fp);
-            fp = fopen(path, READ);
+            FILE *fp = fopen(path, READ);
             char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
+            // stl fgets() eq. getline() gnu gcc (linux specific)
             while (fgets(str, GetNumberOfCharsFromFile(path), fp))
             {
                 // printf("%s\n", str);
@@ -116,7 +104,37 @@ void PrintFileData(const char *path, unsigned int wantCreate)
         }
         else
         {
-            printf("No actions have been commited!\n");
+            printf("File does not exist!");
+        }
+    }
+    else
+    {
+        if (IsFileExist(path))
+        {
+            FILE *fp = fopen(path, READ);
+            char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
+            // stl fgets() eq. getline() gnu gcc (linux specific)
+            while (fgets(str, GetNumberOfCharsFromFile(path), fp))
+            {
+                // printf("%s\n", str);
+                printf("%s", str);
+            }
+            free(str);
+            fclose(fp);
+        }
+        else
+        {
+            FILE *fp = fopen(path, CREATEWRITE);
+            fclose(fp);
+            fp = fopen(path, READ);
+            char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
+            while (fgets(str, GetNumberOfCharsFromFile(path), fp))
+            {
+                // printf("%s\n", str);
+                printf("%s", str);
+            }
+            // free(str);
+            fclose(fp);
         }
     }
 }
@@ -162,14 +180,17 @@ char **GetLines(const char *path)
     if (IsFileExist(path))
     {
         FILE *fp = fopen(path, READ);
-        char **arr = malloc(sizeof(char) * GetNumberOfLinesFromFile(path));
+        char **arr = (char **)malloc(sizeof(char) * GetNumberOfLinesFromFile(path));
+        printf("USABLE SIZE = %i\n", (int)malloc_usable_size(arr));
         char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
         unsigned int index = 0;
         while (fgets(str, GetNumberOfCharsFromFile(path), fp))
         {
             arr[index] = str;
+            // printf("%s", arr[index]);
+            index = index + 1;
         }
-        free(str);
+        // free(str);
         fclose(fp);
         return arr;
     }
