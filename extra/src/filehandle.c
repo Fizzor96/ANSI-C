@@ -84,9 +84,6 @@ unsigned int GetCharNumOfLongestLineFromFile(const char *path)
 
 void PrintFileData(const char *path, unsigned int wantCreate)
 {
-    if (wantCreate == (unsigned int)0)
-        wantCreate = NOCREATE;
-
     if (wantCreate == NOCREATE)
     {
         if (IsFileExist(path))
@@ -125,15 +122,6 @@ void PrintFileData(const char *path, unsigned int wantCreate)
         else
         {
             FILE *fp = fopen(path, CREATEWRITE);
-            fclose(fp);
-            fp = fopen(path, READ);
-            char *str = (char *)malloc(sizeof(char) * GetNumberOfCharsFromFile(path));
-            while (fgets(str, GetNumberOfCharsFromFile(path), fp))
-            {
-                // printf("%s\n", str);
-                printf("%s", str);
-            }
-            // free(str);
             fclose(fp);
         }
     }
@@ -209,8 +197,8 @@ char *GetNthLine(const char *path, unsigned int n)
                 // 0x0a == \n
                 if (c == 0x0a)
                 {
-                    counter = counter + 1;
                     line[j] = 0x00;
+                    counter = counter + 1;
                     j = 0;
                 }
             }
@@ -224,7 +212,6 @@ char *GetNthLine(const char *path, unsigned int n)
                 if (c == 0x0a)
                 {
                     counter = counter + 1;
-                    // line[j] = 0x0a;
                     j = 0;
                 }
             }
