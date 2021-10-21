@@ -1,1 +1,0 @@
-/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0  -g -Wall -Wunused-but-set-variable -g CMakeFiles/ApplicationExtra.dir/src/filehandle.c.o CMakeFiles/ApplicationExtra.dir/src/main.c.o -o ApplicationExtra  -lm 

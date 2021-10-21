@@ -1,3 +1,0 @@
-/home/dominik/Prog/AnsiC/ANSI-C/extra/build/CMakeFiles/rebuild_cache.dir
-/home/dominik/Prog/AnsiC/ANSI-C/extra/build/CMakeFiles/edit_cache.dir
-/home/dominik/Prog/AnsiC/ANSI-C/extra/build/CMakeFiles/ApplicationExtra.dir
