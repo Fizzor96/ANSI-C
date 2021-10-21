@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/dominik/Prog/AnsiC/ANSI-C/practice/build",
+  "command": "/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0    -g -Wall -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -g -std=gnu99 -o CMakeFiles/Practice.dir/src/linkedlist.c.o -c /home/dominik/Prog/AnsiC/ANSI-C/practice/src/linkedlist.c",
+  "file": "/home/dominik/Prog/AnsiC/ANSI-C/practice/src/linkedlist.c"
+},
+{
+  "directory": "/home/dominik/Prog/AnsiC/ANSI-C/practice/build",
+  "command": "/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0    -g -Wall -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -g -std=gnu99 -o CMakeFiles/Practice.dir/src/main.c.o -c /home/dominik/Prog/AnsiC/ANSI-C/practice/src/main.c",
+  "file": "/home/dominik/Prog/AnsiC/ANSI-C/practice/src/main.c"
+}
+]

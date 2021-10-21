@@ -6,14 +6,14 @@
 
 void Sep();
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 
     // for (size_t i = 0; i < argc; i++)
     // {
     //     printf("argv %i: %s\n", (int)i, argv[i]);
     // }
-    printf("ARGC = %i\n", argc);
+    // printf("ARGC = %i\n", argc);
 
     int run = 0;
 
@@ -54,10 +54,6 @@ int main(int argc, char *argv[])
         WriteToFile(path, paragraph1, CREATEWRITETRUNC);
         WriteToFile(path, paragraph2, CREATEAPPEND);
         WriteToFile(path, paragraph3, CREATEAPPEND);
-        WriteToFile(path, paragraph1, CREATEAPPEND);
-        WriteToFile(path, paragraph2, CREATEAPPEND);
-        WriteToFile(path, paragraph3, CREATEAPPEND);
-        // WriteToFile(path, paragraph4, CREATEAPPEND);
         Sep();
 
         // Info
@@ -78,9 +74,9 @@ int main(int argc, char *argv[])
         Sep();
 
         // Getting Nth line from file
-        printf("Getting 4th line from file\n");
+        printf("Getting 2nd line from file\n");
         Sep();
-        char *nthline = GetNthLine(path, 4);
+        char *nthline = GetNthLine(path, 1);
         printf("%s", nthline);
 
         Sep();
@@ -93,7 +89,7 @@ int main(int argc, char *argv[])
         char **arr = (char **)malloc(sizeof(char) * GetNumberOfLinesFromFile(path) * GetCharNumOfLongestLineFromFile(path));
         GetLines(path, arr);
         // Iterate from 0 to NumOfLines -1 to fix the problem and every sting must finish with '\n'
-        for (size_t i = 0; i < GetNumberOfLinesFromFile(path); i++)
+        for (size_t i = 0; i < GetNumberOfLinesFromFile(path) - 1; i++)
         {
             printf("Line: %i\n%s\n", (int)i, arr[i]);
         }

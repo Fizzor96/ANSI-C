@@ -1,0 +1,1 @@
+/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0  -g -Wall -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -g CMakeFiles/Practice.dir/src/linkedlist.c.o CMakeFiles/Practice.dir/src/main.c.o -o Practice  -lm 

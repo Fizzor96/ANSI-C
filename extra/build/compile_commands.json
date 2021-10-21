@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/dominik/Prog/AnsiC/ANSI-C/extra/build",
+  "command": "/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0    -g -Wall -Wunused-but-set-variable -g -std=gnu99 -o CMakeFiles/ApplicationExtra.dir/src/filehandle.c.o -c /home/dominik/Prog/AnsiC/ANSI-C/extra/src/filehandle.c",
+  "file": "/home/dominik/Prog/AnsiC/ANSI-C/extra/src/filehandle.c"
+},
+{
+  "directory": "/home/dominik/Prog/AnsiC/ANSI-C/extra/build",
+  "command": "/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0    -g -Wall -Wunused-but-set-variable -g -std=gnu99 -o CMakeFiles/ApplicationExtra.dir/src/main.c.o -c /home/dominik/Prog/AnsiC/ANSI-C/extra/src/main.c",
+  "file": "/home/dominik/Prog/AnsiC/ANSI-C/extra/src/main.c"
+}
+]
