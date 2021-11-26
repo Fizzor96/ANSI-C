@@ -5,7 +5,7 @@ project(ApplicationExtra)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Wunused-but-set-variable")
 
 file(GLOB Application_SRC
-     "src/*.h",
+     "src/*.h"
      "src/*.c"
 )
 

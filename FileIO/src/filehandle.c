@@ -146,8 +146,12 @@ char *LoadFromFile(const char *path)
             }
 
             storage[i] = c;
-        }
 
+            if (i == GetNumberOfCharsFromFile(path) - 1)
+            {
+                storage[i + 1] = 0x00;
+            }
+        }
         return storage;
     }
     return NULL;
