@@ -1,1 +1,0 @@
-/usr/bin/x86_64-pc-linux-gnu-gcc-11.1.0  -g -Wall -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable -g CMakeFiles/Gyak.dir/src/lancoltlista.c.o CMakeFiles/Gyak.dir/src/main.c.o -o Gyak  -lm 

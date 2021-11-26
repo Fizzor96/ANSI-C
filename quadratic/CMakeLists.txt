@@ -6,4 +6,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall")
 
 add_executable(quadraticapp main.c quadratic.h quadratic.c)
 
-target_link_libraries(quadraticapp libm.so)
+IF (WIN32)
+ELSE()
+     target_link_libraries(${CMAKE_PROJECT_NAME} libm.so)
+ENDIF()
