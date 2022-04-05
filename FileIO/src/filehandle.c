@@ -3,7 +3,7 @@
 unsigned int IsFileExist(const char *path)
 {
     // Macros for access() param declared in unistd.h eg. F_OK = 0
-    if (access(path, F_OK) == 0)
+    if (access(path, 0) == 0)
     {
         // File exist
         return 1;
@@ -152,6 +152,7 @@ char *LoadFromFile(const char *path)
                 storage[i + 1] = 0x00;
             }
         }
+        fclose(fp);
         return storage;
     }
     return NULL;
